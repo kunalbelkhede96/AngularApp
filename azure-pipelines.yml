@@ -22,7 +22,7 @@ stages:
       - task: Npm@1
         inputs:
           command: 'install'
-          workingDir: '$(System.DefaultWorkingDirectory)/angularapp/package.json'
+          workingDir: '$(System.DefaultWorkingDirectory)/angularapp'
         displayName: 'Install project dependencies'
 
       - task: CmdLine@2
