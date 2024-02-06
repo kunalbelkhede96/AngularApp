@@ -6,7 +6,7 @@ pool:
 stages:
  - stage: 'Build'
    jobs:
-    - job: 'installandbuild'
+    - job: 'Build'
       steps:
       - task: NodeTool@0
         inputs:
@@ -30,3 +30,16 @@ stages:
           script: 'ng build --configuration=production'
           workingDirectory: '$(System.DefaultWorkingDirectory)/angularapp'
         displayName: 'Build Angular app'
+       
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/angularapp/dist'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/angular-app.zip'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+         ArtifactName: 'angular-app' 
+         
