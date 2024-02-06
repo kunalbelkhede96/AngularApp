@@ -1,0 +1,10 @@
+trigger: none
+
+pool:
+ vmImage: 'ubntu-latest'
+
+stages:
+ - stage:'build'
+   jobs:
+    - job:'bulid and run'
+      steps:
