@@ -26,5 +26,5 @@ stages:
 
       - task: CmdLine@2
         inputs:
-          script: 'ng build --prod'
+          script: 'ng build'
         displayName: 'Build Angular app'
