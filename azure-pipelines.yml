@@ -10,7 +10,7 @@ stages:
       steps:
       - task: NodeTool@0
         inputs:
-         versionSpec: '14.x'  # Use the version of Node.js required for your Angular app
+         versionSpec: '18.x'  # Use the version of Node.js required for your Angular app
         displayName: 'Install Node.js'
 
       - task: Npm@1
