@@ -8,14 +8,23 @@ stages:
    jobs:
     - job: 'installandbuild'
       steps:
-           
-      - task: Npm@1
+      - task: NodeTool@0
         inputs:
-         command: 'install'
-         workingDir: '$(System.DefaultWorkingDirectory)'
-        
+         versionSpec: '14.x'  # Use the version of Node.js required for your Angular app
+        displayName: 'Install Node.js'
+
       - task: Npm@1
         inputs:
           command: 'custom'
-          workingDir: '$(System.DefaultWorkingDirectory)'
-          customCommand: 'run build'
+          customCommand: 'install -g @angular/cli'
+        displayName: 'Install Angular CLI'
+
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: 'Install project dependencies'
+
+      - task: CmdLine@2
+        inputs:
+          script: 'ng build --prod'
+        displayName: 'Build Angular app'
