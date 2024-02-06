@@ -27,6 +27,6 @@ stages:
 
       - task: CmdLine@2
         inputs:
-          script: 'ng build --prod'
+          script: 'ng build --configuration=production'
           workingDirectory: '$(System.DefaultWorkingDirectory)/angularapp'
         displayName: 'Build Angular app'
