@@ -12,9 +12,8 @@ stages:
       - task: Npm@1
         inputs:
          command: 'install'
-         workingDir: 'AngularApp/src'
+        
       - task: Npm@1
         inputs:
           command: 'custom'
-          workingDir: 'AngularApp/src'
           customCommand: 'run build'
