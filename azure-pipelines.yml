@@ -25,10 +25,11 @@ stages:
           workingDir: '$(System.DefaultWorkingDirectory)/angularapp'
         displayName: 'Install project dependencies'
 
-      - task: CmdLine@2
+      - task: Npm@1
         inputs:
-          script: 'ng build --configuration=production'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/angularapp'
+         command: 'custom'
+         customCommand: 'run build'  # Replace 'build' with the name of your npm script
+         workingDir: '$(System.DefaultWorkingDirectory)/angularapp'  # Adjust the path to the directory containing package.json
         displayName: 'Build Angular app'
        
       - task: ArchiveFiles@2
